@@ -27,7 +27,20 @@ class WelcomeTest {
 
 	@Test
 	void gestionNoms() {
-		assertEquals(Welcome.welcome("amy,bob"), "Hello, Amy, Bob");
+		assertEquals(Welcome.welcome(" amy,bob"), "Hello, Amy, Bob");
 
 	}
+
+	@Test
+	void gestionNomss() {
+		assertEquals(Welcome.welcome("Amy, bob, jerry"), "Hello, Amy, Bob, Jerry");
+
+	}
+
+	@Test
+	void gestionCrisNoms() {
+		assertEquals(Welcome.welcome("amy, BOB, Jerry"), "Hello, Amy, Jerry.AND HELLO, BOB!");
+
+	}
+
 }
