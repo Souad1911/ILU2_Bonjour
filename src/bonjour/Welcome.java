@@ -8,6 +8,9 @@ public class Welcome {
 			return "Hello, my friend";
 
 		}
+		if (estEnMajuscule(input)) {
+			return gestionCris(input);
+		}
 
 		return "Hello, " + capitalize(input);
 
@@ -30,5 +33,18 @@ public class Welcome {
 			return name;
 
 		}
+	}
+
+	public static boolean estEnMajuscule(String chaine) {
+		for (int i = 0; i < chaine.length(); i++) {
+			if (!Character.isUpperCase(chaine.charAt(i))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static String gestionCris(String nom) {
+		return "HELLO, " + nom + " !";
 	}
 }

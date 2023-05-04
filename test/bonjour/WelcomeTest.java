@@ -18,4 +18,10 @@ class WelcomeTest {
 		assertEquals("Hello, my friend", Welcome.welcome(null));
 
 	}
+
+	@Test
+	void gestionCris() {
+		assertEquals(Welcome.welcome("JERRY"), "HELLO, JERRY !");
+
+	}
 }
