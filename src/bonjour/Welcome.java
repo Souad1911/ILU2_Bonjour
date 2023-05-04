@@ -11,6 +11,10 @@ public class Welcome {
 		if (estEnMajuscule(input)) {
 			return gestionCris(input);
 		}
+		if (contientVirgule(input)) {
+			return gestionNoms(input);
+
+		}
 
 		return "Hello, " + capitalize(input);
 
@@ -46,5 +50,16 @@ public class Welcome {
 
 	public static String gestionCris(String nom) {
 		return "HELLO, " + nom + " !";
+	}
+
+	public static String gestionNoms(String noms) {
+		String[] parties = noms.split(",");
+		String nom1 = parties[0].trim().substring(0, 1).toUpperCase() + parties[0].trim().substring(1).toLowerCase();
+		String nom2 = parties[1].trim().substring(0, 1).toUpperCase() + parties[1].trim().substring(1).toLowerCase();
+		return "Hello, " + nom1 + ", " + nom2;
+	}
+
+	public static boolean contientVirgule(String chaine) {
+		return chaine.contains(",");
 	}
 }
