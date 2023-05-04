@@ -8,7 +8,14 @@ class WelcomeTest {
 
 	@Test
 	void hello_bob() {
-		assertEquals(Welcome.welcome("bob"), "Hello bob");
+
+		assertEquals(Welcome.welcome("bob"), "Hello, Bob");
+
 	}
 
+	@Test
+	void hello_friend() {
+		assertEquals("Hello, my friend", Welcome.welcome(null));
+
+	}
 }
