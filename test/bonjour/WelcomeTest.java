@@ -42,5 +42,19 @@ class WelcomeTest {
 		assertEquals(Welcome.welcome("amy, BOB, Jerry"), "Hello, Amy, Jerry.AND HELLO, BOB!");
 
 	}
+	@Test 
+	void ajouterAnd() {
+		
+	}
+	@Test 
+	void gestionEspace() {
+		assertEquals(Welcome.welcome("bob   ,amy  "), "Hello, Bob and Amy");
+	}
+	@Test 
+	void gestionRepetitions() {
+		assertEquals(Welcome.welcome("bob, JERRY, amy, bob, JERRY, bob"), "Hello, Bob(x3) and Amy.AND HELLO, JERRY (x2) !");
+		
+	}
+	
 
 }
