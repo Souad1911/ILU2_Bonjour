@@ -99,7 +99,7 @@ public class Welcome {
 		StringBuilder majuscules = new StringBuilder();
 		for (int i = 0; i < parties.length; i++) {
 			String nom = parties[i].trim();
-			if (nom.toUpperCase().equals(nom)) { // si le nom est enti�rement en majuscules
+			if (nom.toUpperCase().equals(nom)) { // si le nom est entièrement en majuscules
 				if (majuscules.length() > 0) {
 					majuscules.append(", ");
 				}
@@ -132,5 +132,127 @@ public class Welcome {
 		}
 		return false;
 	}
+	//fonction pour ajouter and iter7 
+		public static String ajouterAnd(String noms) {
+		    String[] listeNoms = noms.split(",");
+		    int longueur = listeNoms.length;
+		    String message = "Hello";
+		    if (longueur == 1) {
+		      message += ", " + listeNoms[0].trim();
+		    } else if (longueur == 2) {
+		      message += ", " + listeNoms[0].trim() + " and " + listeNoms[1].trim();
+		    } else {
+		      for (int i = 0; i < longueur - 1; i++) {
+		        message += ", " + listeNoms[i].trim();
+		      }
+		      message += " and " + listeNoms[longueur - 1].trim();
+		    }
+		    message += "!";
+		    return message;
+		  }
+		
+		public static String gestionEspaces (String chaine) {
+			String[] names = chaine.split(","); // Séparer les noms par la virgule
+	        String output = "Hello, ";
+	        
+	        for (int i = 0; i < names.length; i++) {
+	            String name = names[i].trim(); // Supprimer les espaces inutiles autour des noms
+	            if (i == 0) {
+	                output += capitalizerNom(name); // Mettre en majuscule la première lettre du premier nom
+	            } else {
+	                output += " and " + capitalizerNom(name); // Ajouter "and" avant les autres noms
+	            }
+	        }
+	        
+	        return output;
+	    }
+		public static String capitalizerNom(String str) {
+	        if (str == null || str.isEmpty()) {
+	            return str;
+	        } else {
+	            return str.substring(0, 1).toUpperCase() + str.substring(1);
+	        	}
+	    }
+		public static boolean contientEspaces(String str) {
+		    if (str == null) {
+		        return false;
+		    }
+		    for (int i = 0; i < str.length(); i++) {
+		        if (str.charAt(i) == ' ') {
+		            return true;
+		        }
+		    }
+		    return false;
+		}
+		
+		//pour iterations9
+		public static String compterNoms(String noms) {
+		    String[] nomsArray = noms.split(",");
+		    int n = nomsArray.length;
+
+		    String[] distinctNoms = new String[n];
+		    int[] counts = new int[n];
+		    int distinctCount = 0;
+
+		    // Parcourt la liste de noms et on  met à jour le tableau des noms distincts et le tableau des occurrences
+		    for (int i = 0; i < n; i++) {
+		        String nom = nomsArray[i].trim().toLowerCase();
+		        boolean alreadyCounted = false;
+
+		        for (int j = 0; j < distinctCount; j++) {
+		            if (nom.equals(distinctNoms[j])) {
+		                counts[j]++;
+		                alreadyCounted = true;
+		                break;
+		            }
+		        }
+
+		        if (!alreadyCounted) {
+		            distinctNoms[distinctCount] = nom;
+		            counts[distinctCount] = 1;
+		            distinctCount++;
+		        }
+		    }
+
+		    // Crée la chaîne de message à renvoyer en appelant la méthode privée createMessage
+		    String message = createMessage(distinctNoms, counts, distinctCount);
+
+		    return message;
+		}
+
+		private static String createMessage(String[] noms, int[] counts, int distinctCount) {
+		    // Crée la chaîne de message à renvoyer
+		    String message = "Hello";
+		    for (int i = 0; i < distinctCount; i++) {
+		        message += " " + noms[i].substring(0, 1).toUpperCase() + noms[i].substring(1);
+		        if (counts[i] > 1) {
+		            message += " (x" + counts[i] + ")";
+		        }
+
+		        if (i < distinctCount - 2) {
+		            message += ", ";
+		        } else if (i == distinctCount - 2) {
+		            message += " AND ";
+		        }
+		    }
+
+		    message += "!";
+
+		    return message;
+		}
+		public static boolean verifierRepetitions(String chaine) {
+		    String[] parties = chaine.split(",");
+		    int n = parties.length;
+
+		    for (int i = 0; i < n - 1; i++) {
+		        for (int j = i + 1; j < n; j++) {
+		            if (parties[i].trim().equalsIgnoreCase(parties[j].trim())) {
+		                return true;
+		            }
+		        }
+		    }
+
+		    return false;
+		}
 
 }
